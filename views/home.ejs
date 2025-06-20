@@ -4,7 +4,12 @@
 <head>
     <title>callBlogs</title>
     <%- include('./partials/head') %>
+    
     <style>
+        *{
+        margin: 0;
+        padding: 0;
+    }
         body {
       min-height: 100vh;
       display: flex;
@@ -14,18 +19,32 @@
     .footer {
       margin-top: auto;
     }
+
+    @media screen and (max-width: 340px) {
+        .cardCss {
+            scale: 0.8;
+        }
+        
+    }
+    @media screen and (max-width: 1510px) {
+        .cardCss {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+    }
     </style>
 </head>
 
 <body>
     <%- include('./partials/nav') %>
 
-        <div class="container mt-3">
-            <div class="row row-cols-4">
+        <div class="container-fluid my-2 d-flex justify-content-center align-items-center">
+            <div class="container-fluid d-flex flex-wrap">
                 <% blogs.forEach((blog)=> { %>
-                    <div class="col" style="margin: 0.5rem 0;">
-                        <div class="card mt-2 col" style="width: 18rem;">
-                            <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="..." style="object-fit: contain; height: 200px;">
+                    <div class="col" style="margin: 0.5rem 0; z-index: 0;">
+                        <div class="card mt-2 col cardCss" style="width: 18rem;">
+                            <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="..." style="object-fit: contain; height: 200px; background-color: rgba(159, 159, 148, 0.168);">
                             <div class="card-body">
                                 <h5 class="card-title"><%= blog.title %></h5>
                                 <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
